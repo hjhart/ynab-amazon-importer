@@ -53,6 +53,7 @@ Now, drag navigate to [the new YNAB][the_new_ynab], click on the credit card acc
 • Implement an initial script.
 • Support multiple credit cards.
 • Support split transactions when a single shipment has multiple items.
+• If "release date" in the items CSV is in the future, schedule a transaction.
 
 ## Tests
 

@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'virtus'
-gem 'money'
+gem 'monetize'
 
 group :test do
   gem 'rspec'

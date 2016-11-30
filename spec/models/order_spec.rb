@@ -9,8 +9,8 @@ describe Order do
   end
 
   context 'when fulfillments are added' do
-    let(:fulfillment_one) { Fulfillment.new(order_id: order_id, shipment_date: Date.parse('11-01-2016'), total_price: Money.new(1234))}
-    let(:fulfillment_two) { Fulfillment.new(order_id: order_id, shipment_date: Date.parse('11-04-2016'), total_price: Money.new(4321))}
+    let(:fulfillment_one) { Fulfillment.new(order_id: order_id, shipment_date: Date.parse('11-01-2016'), total_price: 1234)}
+    let(:fulfillment_two) { Fulfillment.new(order_id: order_id, shipment_date: Date.parse('11-04-2016'), total_price: 4321)}
 
     before do
       order.fulfillments << fulfillment_one
@@ -31,7 +31,7 @@ describe Order do
       order.items << item_two
     end
 
-    it 'has many fulfillments' do
+    it 'has many items' do
       expect(order.items).to match_array([item_one, item_two])
     end
   end

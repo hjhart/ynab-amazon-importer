@@ -1,5 +1,4 @@
-require_relative '../../config/environment'
-require 'spec_helper'
+require 'environment_helper'
 
 describe Fulfillment do
   let(:fulfillment) { Fulfillment.new(shipment_date: '2016-11-02') }

@@ -3,4 +3,5 @@ class Order
 
   attribute :id, String
   attribute :fulfillments, Array[Fulfillment]
+  attribute :items, Array[Item]
 end

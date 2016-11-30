@@ -1,5 +1,4 @@
-require_relative '../../config/environment'
-require 'spec_helper'
+require 'environment_helper'
 
 describe Order do
   let(:order_id) { '002-23123-1232' }
@@ -20,6 +19,20 @@ describe Order do
 
     it 'has many fulfillments' do
       expect(order.fulfillments).to match_array([fulfillment_one, fulfillment_two])
+    end
+  end
+
+  context 'when items are added' do
+    let(:item_one) { Item.new(order_id: order_id, title: 'Furby!')}
+    let(:item_two) { Item.new(order_id: order_id, title: 'Tokyo Police Club Album')}
+
+    before do
+      order.items << item_one
+      order.items << item_two
+    end
+
+    it 'has many fulfillments' do
+      expect(order.items).to match_array([item_one, item_two])
     end
   end
 

@@ -1,2 +1,6 @@
-require 'virtus'
-require_relative '../app/models/amazon_order'
+require 'rubygems'
+require 'bundler'
+Bundler.require(:default)
+
+require_relative '../app/models/fulfillment'
+require_relative '../app/models/order'

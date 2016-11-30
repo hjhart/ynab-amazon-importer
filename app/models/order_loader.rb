@@ -10,9 +10,9 @@ class OrderLoader
     unique_order_ids.map do |order_id|
       order = Order.new(order_id: order_id)
       fulfillments = shipments_csv.select { |shipment| shipment['Order ID'] == order_id }
-      order.fulfillments = fulfillments.map { |fulfillment| Fulfillment.new(shipment_date: nil, total_price: nil)}
+      order.fulfillments = fulfillments.map { |fulfillment| Fulfillment.new(shipment_date: fulfillment['Shipment Date'], total_price: fulfillment['Total Charged'])}
       items = items_csv.select { |item| item['Order ID'] == order_id }
-      order.items = items.map { |item| Item.new(title: nil)}
+      order.items = items.map { |item| Item.new(title: item['Title'])}
       order
     end
   end

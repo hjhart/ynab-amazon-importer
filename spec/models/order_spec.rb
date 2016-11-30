@@ -10,8 +10,8 @@ describe Order do
     end
 
     context 'when fulfillments are added' do
-      let(:fulfillment_one) { Fulfillment.new(order_id: order_id, shipment_date: Date.parse('11-01-2016'), total_price: 1234)}
-      let(:fulfillment_two) { Fulfillment.new(order_id: order_id, shipment_date: Date.parse('11-04-2016'), total_price: 4321)}
+      let(:fulfillment_one) { Fulfillment.new(order_id: order_id, shipment_date: '11/01/16', total_price: 1234)}
+      let(:fulfillment_two) { Fulfillment.new(order_id: order_id, shipment_date: '11/04/16', total_price: 4321)}
 
       before do
         order.fulfillments << fulfillment_one

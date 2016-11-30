@@ -4,10 +4,16 @@ class MoneyAttribute < Virtus::Attribute
   end
 end
 
+class DateAttribute < Virtus::Attribute
+  def coerce(value)
+    Date.strptime(value, '%m/%d/%y')
+  end
+end
+
 
 class Fulfillment
   include Virtus.model
 
-  attribute :shipment_date, Date
+  attribute :shipment_date, DateAttribute
   attribute :total_price, MoneyAttribute
 end

@@ -47,9 +47,8 @@ describe Order do
     it 'correctly matches the shipments to the items memo' do
       resolver = instance_double(TransactionResolver, items: items)
       expect(TransactionResolver).to receive(:new).with(fulfillment: fulfillment, remaining_items: items) { resolver }
-      transaction_row = ['2016-11-01','Amazon.com',nil,'Furby!','12.34', nil]
-      expected_csv = CSV.generate { |csv| csv << header_row; csv << transaction_row }
-      expect(order.transaction_csv).to eq(expected_csv)
+      transaction_row = [Date.parse('2016-11-01'),'Amazon.com',nil,'Furby!','$12.34'.to_money, nil]
+      expect(order.transactions).to eq([transaction_row])
     end
 
     context 'when the item is not found' do
@@ -58,9 +57,8 @@ describe Order do
       it 'labels them as unknown if the items are not found' do
         resolver = instance_double(TransactionResolver, items: [])
         expect(TransactionResolver).to receive(:new).with(fulfillment: fulfillment, remaining_items: items) { resolver }
-        transaction_row = ['2016-11-01','Amazon.com',nil,'Unknown','12.34', nil]
-        expected_csv = CSV.generate { |csv| csv << header_row; csv << transaction_row }
-        expect(order.transaction_csv).to eq(expected_csv)
+        transaction_row = [Date.parse('2016-11-01'),'Amazon.com',nil,'Unknown','$12.34'.to_money, nil]
+        expect(order.transactions).to eq([transaction_row])
       end
     end
   end

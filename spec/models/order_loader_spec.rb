@@ -29,5 +29,16 @@ describe OrderLoader do
         expect(orders.first.fulfillments).to be_empty
       end
     end
+
+    context 'when a fulfillment does not have a tracking number' do
+      let(:shipment_csv) { CSV.parse(File.read('spec/fixtures/amazon_orders_and_shipments_missing_tracking_number.csv'), headers: true) }
+
+      it 'skips the fulfillment' do
+        orders = OrderLoader.new(items_csv: items_csv, shipments_csv: shipment_csv).orders
+        expect(orders.size).to eq(1)
+        expect(orders.first).to be_a(Order)
+        expect(orders.first.fulfillments).to be_empty
+      end
+    end
   end
 end

@@ -14,7 +14,6 @@ class Order
         transactions << [fulfillment.shipment_date, 'Amazon.com', nil, items.map(&:title).join(' SPLIT '), fulfillment.total_price, nil]
         items.each { |item| remaining_items.delete(item) }
       else
-        puts order.inspect
         transactions << [fulfillment.shipment_date, 'Amazon.com', nil, 'Unknown', fulfillment.total_price, nil]
       end
     end

@@ -6,17 +6,20 @@ class Order
   attribute :items, Array[Item]
 
   def transactions
-    transactions = []
     remaining_items = self.items.dup
-    self.fulfillments.each do |fulfillment|
+    self.fulfillments.map do |fulfillment|
       items = TransactionResolver.new(remaining_items: remaining_items, fulfillment: fulfillment).items
-      if items.size > 0
-        transactions << [fulfillment.shipment_date, 'Amazon.com', nil, items.map(&:title).join(' SPLIT '), fulfillment.total_price, nil]
-        items.each { |item| remaining_items.delete(item) }
+      if items.size > 1
+        memo = 'MULTIPLE ITEMS –– '
+        memo += items.map(&:title).join(' –– ')
+      elsif items.size == 1
+        memo = items.first.title
       else
-        transactions << [fulfillment.shipment_date, 'Amazon.com', nil, 'Unknown', fulfillment.total_price, nil]
+        memo = 'Unknown'
       end
+
+      items.each { |item| remaining_items.delete(item) }
+      [fulfillment.shipment_date, 'Amazon.com', nil, memo, fulfillment.total_price, nil]
     end
-    transactions
   end
 end

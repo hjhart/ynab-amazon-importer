@@ -44,6 +44,16 @@ describe Order do
     let(:fulfillment) { Fulfillment.new(shipment_date: '11/01/16', total_price: '$12.34') }
     let(:items) { [Item.new(title: 'Furby!', total_price: '$12.34')] }
 
+    context 'when there are more than one item' do
+      let(:items) { [Item.new(title: 'Furby!', total_price: '$12.34'), Item.new(title: 'Furry Butts!', total_price: '$12.34')] }
+      it 'changes the memo to say "SPLIT ME!"' do
+        resolver = instance_double(TransactionResolver, items: items)
+        expect(TransactionResolver).to receive(:new).with(fulfillment: fulfillment, remaining_items: items) { resolver }
+        transaction_row = [Date.parse('2016-11-01'),'Amazon.com',nil,'MULTIPLE ITEMS –– Furby! –– Furry Butts!','$12.34'.to_money, nil]
+        expect(order.transactions).to eq([transaction_row])
+      end
+    end
+
     it 'correctly matches the shipments to the items memo' do
       resolver = instance_double(TransactionResolver, items: items)
       expect(TransactionResolver).to receive(:new).with(fulfillment: fulfillment, remaining_items: items) { resolver }

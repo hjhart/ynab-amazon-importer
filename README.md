@@ -48,12 +48,18 @@ Once they fully export (takes a while) you'll use both of these as inputs for th
 
 Now, drag navigate to [the new YNAB][the_new_ynab], click on the credit card account that you use on amazon, and the `amazon_orders.csv` file anywhere in the browser. It should then show an import message with all of your transactions.
 
+## Assumptions:
+
+You use one credit card for Amazon. We want to generate one CSV from all your amazon orders from one credit card right now.
+If an item doesn't have a shipment date, do not import the transaction.
+If an item doesn't have a tracking number, do not import the transaction.
+
 ## Todo:
 
-• Implement an initial script.
-• Support multiple credit cards.
+• When there are multiple items in a fulfillment, divvy up the tax and shipping costs amongst it proportionately.
 • Support split transactions when a single shipment has multiple items.
 • If "release date" in the items CSV is in the future, schedule a transaction.
+• Support multiple credit cards.
 
 ## Tests
 

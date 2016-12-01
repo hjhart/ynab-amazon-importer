@@ -16,4 +16,5 @@ class Fulfillment
 
   attribute :shipment_date, DateAttribute
   attribute :total_price, MoneyAttribute
+  attribute :tracking_number, String
 end

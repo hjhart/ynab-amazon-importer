@@ -1,7 +1,7 @@
 require 'environment_helper'
 
 describe Fulfillment do
-  let(:fulfillment) { Fulfillment.new(shipment_date: '11/05/16', total_price: '$12.34') }
+  let(:fulfillment) { Fulfillment.new(shipment_date: '11/05/16', total_price: '$12.34', tracking_number: 'AMZN_US(TBA109359633000)') }
 
   it 'has a shipment date' do
     expect(fulfillment.shipment_date).to be_a(Date)
@@ -11,5 +11,9 @@ describe Fulfillment do
   it 'has a total cost' do
     expect(fulfillment.total_price).to eq(Money.new(1234))
     expect(fulfillment.total_price).to be_a(Money)
+  end
+
+  it 'has a tracking number' do
+    expect(fulfillment.tracking_number).to eq('AMZN_US(TBA109359633000)')
   end
 end

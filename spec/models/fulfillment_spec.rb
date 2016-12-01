@@ -11,7 +11,7 @@ describe Fulfillment do
   end
 
   context 'when it does not have a shipment date' do
-    let(:fulfillment) { Fulfillment.new(shipment_date: nil, total_price: '$12.34', tracking_number: 'AMZN_US(TBA109359633000)') }
+    let(:fulfillment) { Fulfillment.new(shipment_date: nil) }
 
     it 'plays it cool' do
       expect(fulfillment.shipment_date).to be nil

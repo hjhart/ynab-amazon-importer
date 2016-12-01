@@ -6,6 +6,7 @@ end
 
 class DateAttribute < Virtus::Attribute
   def coerce(value)
+    return nil if value.nil?
     Date.strptime(value, '%m/%d/%y')
   end
 end

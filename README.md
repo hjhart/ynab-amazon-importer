@@ -73,7 +73,16 @@ _Your name here!!!_
 
 MIT
 
+## Special Thanks
+
+[YNAB CSV generator][csv_generator]
+
+Those on /r/ynab who responded to my [initial post][initial_post].
 
 [order_report]: https://raw.githubusercontent.com/hjhart/ynab-amazon-importer/master/images/order_history_reports.png "Order Report Histroy Screenshot"
 
 [the_new_ynab]: https://app.youneedabudgget.com
+
+[initial_post]: https://www.reddit.com/r/ynab/comments/5flk6w/concept_import_your_amazon_transactions_into_ynab/
+
+[csv_generator]: https://github.com/halloffame/ynab-csv

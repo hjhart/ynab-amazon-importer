@@ -10,7 +10,7 @@ class OrderLoader
     unique_order_ids.map do |order_id|
       order = Order.new(order_id: order_id)
       fulfillments = shipments_csv.select { |shipment| shipment['Order ID'] == order_id }
-      order.fulfillments = fulfillments.map do |fulfillment|
+      order.fulfillments = fulfillments.reject { |ful| ful['Shipment Date'].nil? }.map do |fulfillment|
         Fulfillment.new(
           shipment_date: fulfillment['Shipment Date'],
           total_price: fulfillment['Total Charged'],

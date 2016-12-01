@@ -14,6 +14,7 @@ describe OrderLoader do
       expect(orders.first.fulfillments.first.total_price).to eq('$15.59'.to_money)
       expect(orders.first.items.size).to eq(3)
       expect(orders.first.items.first.title).to eq("ExOfficio Men's Give-N-Go Boxer,Black,Medium")
+      expect(orders.first.items.first.total_price).to eq("$15.59".to_money)
     end
   end
 end

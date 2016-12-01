@@ -37,4 +37,20 @@ describe Order do
       end
     end
   end
+
+  describe '#transactions' do
+    let(:order) { Order.new(id: order_id, fulfillments: fulfillments, items: items) }
+
+    context 'simplest case' do
+      let(:fulfillments) { [Fulfillment.new(shipment_date: '11/01/16', total_price: '$12.34')] }
+      let(:items) { [Item.new(title: 'Furby!', total_price: '$12.34')] }
+
+      it 'correctly matches the shipments to the items memo' do
+        header_row = %w{Date Payee Category Memo Outflow Inflow}
+        transaction_row = ['2016-11-01','Amazon.com',nil,'Furby!','12.34', nil]
+        expected_csv = CSV.generate { |csv| csv << header_row; csv << transaction_row }
+        expect(order.transaction_csv).to eq(expected_csv)
+      end
+    end
+  end
 end

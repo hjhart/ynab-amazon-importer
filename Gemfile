@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'virtus'
 gem 'monetize'
 
-group :test do
+group :test, :development do
   gem 'rspec'
+  gem 'pry'
 end

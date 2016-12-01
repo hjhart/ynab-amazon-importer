@@ -7,13 +7,13 @@ This project should allow a user to export orders successfully from Amazon, and 
 Output a file to STDOUT:
 
 ```
-./bin/export_to_ynab amazon_orders_and_shipments.csv amazon_items.csv
+./bin/ynab_transactions amazon_orders_and_shipments.csv amazon_items.csv
 ```
 
 Output a file to a csv file
 
 ```
-./bin/export_to_ynab amazon_orders_and_shipments.csv amazon_items.csv > amazon_orders.csv
+./bin/ynab_transactions amazon_orders_and_shipments.csv amazon_items.csv > amazon_transactions.csv
 ```
 
 ## Motivation
@@ -43,7 +43,7 @@ Export two different CSVs, with Report Type set to 'Items' and one for 'Orders a
 Once they fully export (takes a while) you'll use both of these as inputs for the ruby script.
 
 ```
-./bin/export_to_ynab amazon_orders_and_shipments.csv amazon_items.csv > amazon_orders.csv
+./bin/ynab_transactions amazon_orders_and_shipments.csv amazon_items.csv > amazon_transactions.csv
 ```
 
 Now, drag navigate to [the new YNAB][the_new_ynab], click on the credit card account that you use on amazon, and the `amazon_orders.csv` file anywhere in the browser. It should then show an import message with all of your transactions.

@@ -17,6 +17,7 @@ describe OrderLoader do
       expect(orders.first.items.first.title).to eq("ExOfficio Men's Give-N-Go Boxer,Black,Medium")
       expect(orders.first.items.first.tracking_number).to eq('AMZN_US(TBA109359633000)')
       expect(orders.first.items.first.total_price).to eq("$15.59".to_money)
+      expect(orders.first.items.first.quantity).to eq(1)
     end
 
     context 'when a fulfillment does not have a shipment date' do

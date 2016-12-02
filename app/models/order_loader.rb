@@ -25,7 +25,8 @@ class OrderLoader
         Item.new(
           title: item['Title'],
           total_price: item['Item Total'],
-          tracking_number: item['Carrier Name & Tracking Number']
+          tracking_number: item['Carrier Name & Tracking Number'],
+          quantity: item['Quantity']
         )
       end
 

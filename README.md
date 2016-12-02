@@ -56,10 +56,19 @@ If an item doesn't have a tracking number, do not import the transaction.
 
 ## Todo:
 
+• Sometimes the date charged on amazon is not the day that the CC company charges it.
 • When there are multiple items in a fulfillment, divvy up the tax and shipping costs amongst it proportionately.
 • Support split transactions when a single shipment has multiple items.
 • If "release date" in the items CSV is in the future, schedule a transaction.
 • Support multiple credit cards.
+• Very complicated case:
+	This order: 107-1647786-1817828
+	Paired with `spec/fixtures/amazon_items_do_not_add_up_to_fulfillment_total.csv` and `spec/fixtures/amazon_orders_and_shipments_do_not_add_up.csv`
+• Sometimes multiple fulfillments are only one charge. See: order: 106-4656789-9498659
+
+Helpful URLS:
+https://www.amazon.com/gp/your-account/order-details/ref=oh_aui_or_o08_?ie=UTF8&orderID=#{your_order_id_here}
+https://www.amazon.com/gp/css/summary/print.html/ref=oh_aui_pi_o06_?ie=UTF8&orderID=#{your_order_id_here}
 
 ## Tests
 

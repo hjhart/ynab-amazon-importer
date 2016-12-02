@@ -11,9 +11,9 @@ class Order
       items = TransactionResolver.new(remaining_items: remaining_items, fulfillment: fulfillment).items
       if items.size > 1
         memo = 'MULTIPLE ITEMS –– '
-        memo += items.map { |item| "#{item.title} #{item.total_price.format}"}.join(' ')
+        memo += items.map { |item| "#{item.memo} #{item.total_price.format}"}.join(' ')
       elsif items.size == 1
-        memo = items.first.title
+        memo = items.first.memo
       else
         memo = 'Unknown'
       end

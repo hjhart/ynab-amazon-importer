@@ -96,7 +96,7 @@ Those on /r/ynab who responded to my [initial post][initial_post].
 
 [order_report]: https://raw.githubusercontent.com/hjhart/ynab-amazon-importer/master/images/order_history_reports.png "Order Report Histroy Screenshot"
 
-[the_new_ynab]: https://app.youneedabudgget.com
+[the_new_ynab]: https://app.youneedabudget.com/
 
 [initial_post]: https://www.reddit.com/r/ynab/comments/5flk6w/concept_import_your_amazon_transactions_into_ynab/
 
